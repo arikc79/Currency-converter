@@ -6,6 +6,12 @@ using System.Text;
 using System.Xml.Serialization;
 
 
+public class Message
+{
+    public string mes { get; set; }
+    public string user { get; set; }
+}
+
 class Program
 {
     static void Main(string[] args)
