@@ -50,6 +50,7 @@ namespace Currency_converter
             label_Conect.ForeColor = System.Drawing.Color.Red;
         }
 
+        // Обробник кнопки Конвертація
 
         private async void button_Convert_Click(object sender, EventArgs e)
         {
