@@ -9,6 +9,12 @@ using System.Xml.Serialization;
 
 namespace Currency_converter
 {
+
+    public class Message
+    {
+        public string mes { get; set; }
+        public string user { get; set; }
+    }
     public partial class Form1 : Form
     {
         private UdpClient client;
