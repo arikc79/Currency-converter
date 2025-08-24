@@ -16,7 +16,7 @@ class Program
 {
     static void Main(string[] args)
     {
-      
+        WaitClientQuery();
         Console.ReadLine();
     }
 
