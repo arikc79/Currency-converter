@@ -37,7 +37,12 @@ namespace Currency_converter
             }
         }
 
-     
+        private async void buttonDisconect_Click(object sender, EventArgs e)
+        {
+            client?.Close();
+            label_Conect.Text = "Відключено!";
+            label_Conect.ForeColor = System.Drawing.Color.Red;
+        }
 
     }
 }
