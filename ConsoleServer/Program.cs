@@ -57,4 +57,30 @@ class Program
         }
     }
 
+
+    private static string CalculateExchangeRate(string fromCurrency, string toCurrency)
+    {
+        double rate = 0.0;
+        if (fromCurrency == "USD" && toCurrency == "EURO") rate = 0.92;
+        else if (fromCurrency == "EURO" && toCurrency == "USD") rate = 1.09;
+
+        else if (fromCurrency == "USD" && toCurrency == "UAH") rate = 41.50;
+        else if (fromCurrency == "UAH" && toCurrency == "USD") rate = 0.0241;
+
+        else if (fromCurrency == "EURO" && toCurrency == "UAH") rate = 45.20;
+        else if (fromCurrency == "UAH" && toCurrency == "EURO") rate = 0.0221;
+
+        else if (fromCurrency == "GBP" && toCurrency == "USD") rate = 1.28;
+        else if (fromCurrency == "USD" && toCurrency == "GBP") rate = 0.781;
+
+        else if (fromCurrency == "GBP" && toCurrency == "UAH") rate = 53.10;
+        else if (fromCurrency == "UAH" && toCurrency == "GBP") rate = 0.0188;
+
+        else if (fromCurrency == "GBP" && toCurrency == "EURO") rate = 1.39;
+        else if (fromCurrency == "EURO" && toCurrency == "GBP") rate = 0.719;
+
+
+        return rate.ToString("F4");
+    }
+
 }
