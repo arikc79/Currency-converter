@@ -44,5 +44,48 @@ namespace Currency_converter
             label_Conect.ForeColor = System.Drawing.Color.Red;
         }
 
+
+        private async void button_Convert_Click(object sender, EventArgs e)
+        {
+            if (client == null)
+            {
+                MessageBox.Show("Спочатку підключіться до сервера!");
+                return;
+            }
+
+            string currencyA = comboBox_SelectСurrency_A.SelectedItem?.ToString();
+            string currencyB = comboBox_SelectCurrency_B.SelectedItem?.ToString();
+
+            if (string.IsNullOrEmpty(currencyA) || string.IsNullOrEmpty(currencyB))
+            {
+                MessageBox.Show("Виберіть валюти!");
+                return;
+            }
+
+            try
+            {
+                MemoryStream stream = new MemoryStream();
+                XmlSerializer serializer = new XmlSerializer(typeof(Message));
+                Message m = new Message
+                {
+                    mes = $"{currencyA} {currencyB}",
+                    user = Environment.UserDomainName + @"\" + Environment.UserName
+                };
+                serializer.Serialize(stream, m);
+                byte[] arr = stream.ToArray();
+                stream.Close();
+
+                IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Parse(textBox_IPadress.Text), 49152);
+                await client.SendAsync(arr, arr.Length, serverEndPoint);
+
+                UdpReceiveResult result = await client.ReceiveAsync();
+                string rate = Encoding.UTF8.GetString(result.Buffer);
+                label2.Text = rate;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Помилка конвертації: " + ex.Message);
+            }
+        }
     }
 }
