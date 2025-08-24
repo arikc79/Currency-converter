@@ -17,5 +17,27 @@ namespace Currency_converter
         {
             InitializeComponent();
         }
+
+        private async void button_Conect_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox_IPadress.Text))
+            {
+                MessageBox.Show("Введіть IP-адресу!");
+                return;
+            }
+            try
+            {
+                client = new UdpClient();
+                label_Conect.Text = "Підключено!";
+                label_Conect.ForeColor = System.Drawing.Color.Green;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Помилка підключення: " + ex.Message);
+            }
+        }
+
+     
+
     }
 }
