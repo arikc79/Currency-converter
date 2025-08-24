@@ -20,7 +20,6 @@ class Program
         Console.ReadLine();
     }
 
-    //  Метод виконуе роль UDP сервера
     private static async void WaitClientQuery()
     {
         UdpClient server = new UdpClient(49152);
